@@ -48,6 +48,11 @@ export default class App extends Component {
     });
   };
 
+  filteredContacts = () =>
+    [...this.state.contacts].filter(({ name }) =>
+      name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+
   render() {
     return (
       <Container>
@@ -55,7 +60,10 @@ export default class App extends Component {
         <ContactForm addContact={this.addContact} />
         <StyledTitle>Contacts</StyledTitle>
         <Filter cbOnChange={this.handleChange} value={this.state.value} />
-        <ContactsList {...this.state} deleteContact={this.deleteContact} />
+        <ContactsList
+          contacts={this.filteredContacts()}
+          deleteContact={this.deleteContact}
+        />
       </Container>
     );
   }

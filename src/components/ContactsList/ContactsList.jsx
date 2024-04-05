@@ -1,13 +1,10 @@
 import ContactsItem from 'components/ContactsItem';
 import { StyledList } from './ContactsList.styled';
 
-function ContactsList({ contacts, filter, deleteContact }) {
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter)
-  );
+function ContactsList({ contacts, deleteContact }) {
   return (
     <StyledList>
-      {filteredContacts.map(({ id, name, number }) => (
+      {contacts.map(({ id, name, number }) => (
         <ContactsItem
           key={id}
           name={name}

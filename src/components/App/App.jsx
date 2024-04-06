@@ -22,14 +22,17 @@ export default class App extends Component {
     ...initialState,
   };
 
-  addContact = newContact => {
-    const isExist = this.state.contacts.find(el => el.name === newContact.name);
+  addContact = contact => {
+    const isExist = this.state.contacts.find(
+      el => el.name.toLowerCase() === contact.name.toLowerCase()
+    );
 
     if (isExist) {
-      alert(`${newContact.name} is already in contacts.`);
+      alert(`${contact.name} is already in contacts.`);
       return;
     }
-    newContact.id = generateID();
+
+    const newContact = { id: generateID(), ...contact };
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
@@ -37,8 +40,9 @@ export default class App extends Component {
   };
 
   deleteContact = id => {
-    const newContacts = this.state.contacts.filter(el => el.id !== id);
-    this.setState({ contacts: newContacts });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(el => el.id !== id),
+    }));
   };
 
   handleChange = evt => {

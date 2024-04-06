@@ -7,4 +7,8 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+  &:active {
+    color: white;
+    background-color: blue;
+  }
 `;

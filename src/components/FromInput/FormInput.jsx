@@ -1,17 +1,20 @@
-function FormInput({ type, name, title, pattern, text, cbOnChange }) {
+import capitalize from 'helpers/capitalize';
+import { StyledLabel, StyledInput } from './FormInput.styled';
+
+function FormInput({ type, name, title, pattern, value, cbOnChange }) {
   return (
-    <label>
-      <span>{name}</span>
-      <input
+    <StyledLabel>
+      <span>{capitalize(name)}</span>
+      <StyledInput
         name={name}
         type={type}
         title={title}
-        value={text}
+        value={value}
         onChange={cbOnChange}
         pattern={pattern}
         required
       />
-    </label>
+    </StyledLabel>
   );
 }
 

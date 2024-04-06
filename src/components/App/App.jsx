@@ -41,7 +41,7 @@ export default class App extends Component {
     this.setState({ contacts: newContacts });
   };
 
-  changeFilter = evt => {
+  handleChange = evt => {
     const { name, value } = evt.target;
     this.setState({
       [name]: value.trim(),
@@ -54,7 +54,7 @@ export default class App extends Component {
         <StyledMainTitle>Phonebook</StyledMainTitle>
         <ContactForm addContact={this.addContact} />
         <StyledTitle>Contacts</StyledTitle>
-        <Filter cbOnChange={this.changeFilter} value={this.state.value} />
+        <Filter cbOnChange={this.handleChange} value={this.state.value} />
         <ContactsList {...this.state} deleteContact={this.deleteContact} />
       </Container>
     );
